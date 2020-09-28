@@ -1,0 +1,2 @@
+rootProject.name='AR_test_3'
+include ':app'
