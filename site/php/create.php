@@ -27,23 +27,53 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
 <head>
     <meta charset="UTF-8">
     <title>Создать квест</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        let k = 0;
+        function exitAcc(){
+            document.location.href="index.php";
+        }
+        function loadMain(){
+            k++;
+            if (k%2==1) alert("Выход на главную страницу приведёт к удалению создаваемого квеста. Для перехода на главную страницу повторите нажатие на кнопку")
+            else document.location.href="profile.php";
+        }
+        function changeProfile(){
+            document.location.href="profile_change.php";
+        }
+    </script>
 </head>
 <body>
 <div class="main">
-    <div class="left">
-        <p>
-            <?php
-            echo($_SESSION['name']);
-            ?>
-        </p>
-    </div>
+<?php
+$name = $_SESSION['name'];
+if($name==null){
+    echo('
+            <div>Вы вышли из аккаунта</div>
+            <div>Войдите в аккаунт, чтобы иметь возможность работать с квестами</div>
+            <button onclick="exitAcc()">Войти в аккаунт</button>
+        ');
+}
+else {
+    echo('<div class="left">     <!-------------------колонка профиля---------------->');
+    $sql = "SELECT img_tmp FROM `users` WHERE name='$name'";
+    $res = mysqli_query($conn,$sql) or die("Error: ".mysqli_error($conn));
+    $row = $res->fetch_array(MYSQLI_ASSOC);
+    $img = $row['img_tmp'];
+    echo('
+                <div class="user_img">
+                    <img src="data:image/png;base64,'.base64_encode($img).'" width="200px" class="round">
+                </div>
+                <div style="margin-bottom: 15px;"><b>'.$name.'</b></div>
+                <button onclick="changeProfile()">Редактировать профиль</button>
+                <button onclick="exitAcc()">Выйти из аккаунта</button>
+            </div>
     <div class="right">
         <div class="head">
             <p>Создать квест</p>
         </div>
-        <div class="logo">
-            <img src="LOGO.png" height="50px" alt="АРГО">
+        <div class="logo" onclick="loadMain()">
+            <img src="../image/LOGO.png" height="90%" alt="АРГО">
         </div>
         <div class="list">
             <form action="" method="post">
@@ -60,7 +90,7 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                 <div class="col2">
                     <p>Обложка</p>
                     <input type="file" name="img" accept="image/*">
-                    <input type="checkbox" name="def" checked="true">Выбрать обложку по умолчанию
+                    <input type="checkbox" name="def" checked="true" >Выбрать обложку по умолчанию
                     <p>Длительность</p>
                     <input list="long" name="long" value="Бесконечно">
                     <datalist id="long">
@@ -72,24 +102,22 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                     </datalist>
                     <input type="submit" name="next" value="Дальше">
                 </div>
-            </form>
-            <?php
-            if(isset($_POST['next'])){
-                $name = $_POST['name'];
-                $text = $_POST['text'];
-                $date = $_POST['date'];
-                $time = $_POST['time'];
-                $def = $_POST['def'];
-                if($def!=true){
-                    $img_name = $_FILES['img']['name'];
-                    $img_tmp = addslashes(file_get_contents($_FILES['img']['tmp_name']));
-                }
-                else{
-                    echo('default');
-                }
-                $long = $_POST['long'];
-                $creator = $_SESSION['name'];
-                $sql = "INSERT INTO `quests` (id,name,text,date,time,longing,creator) VALUES(
+            </form>');
+    if (isset($_POST['next'])) {
+        $name = $_POST['name'];
+        $text = $_POST['text'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $def = $_POST['def'];
+        if ($def != true) {
+            $img_name = $_FILES['img']['name'];
+            $img_tmp = addslashes(file_get_contents($_FILES['img']['tmp_name']));
+        } else {
+            echo('default');
+        }
+        $long = $_POST['long'];
+        $creator = $_SESSION['name'];
+        $sql = "INSERT INTO `quests` (id,name,text,date,time,longing,creator) VALUES(
                     id,
                     '$name',
                     '$text',
@@ -98,25 +126,25 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                     '$long',
                     '$creator'
                 )";
-                $res = mysqli_query($conn, $sql) or die('Ошибка: '.mysqli_error($conn));
+        $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
 
-                $sql = "SELECT id FROM `quests` ORDER BY `id` DESC LIMIT 1";
-                $res = mysqli_query($conn, $sql) or die('Ошибка: '.mysqli_error($conn));
-                $row = $res->fetch_array(MYSQLI_ASSOC);
-                $id = $row['id'];
-                $_SESSION['quest_id'] = $id;
+        $sql = "SELECT id FROM `quests` ORDER BY `id` DESC LIMIT 1";
+        $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
+        $row = $res->fetch_array(MYSQLI_ASSOC);
+        $id = $row['id'];
+        $_SESSION['quest_id'] = $id;
 
-                $sql = "INSERT INTO `quests_cover` (id,img_name,img_tmp) VALUES(
+        $sql = "INSERT INTO `quests_cover` (id,img_name,img_tmp) VALUES(
                     '$id',
                     '$img_name',
                     '$img_tmp'
                 )";
-                $res = mysqli_query($conn, $sql) or die('Ошибка: '.mysqli_error($conn));
-                echo('<script>document.location.href="create1.php"</script>');
-            }
-            ?>
-        </div>
-    </div>
+        $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
+        echo('<script>document.location.href="create1.php"</script>');
+    }
+    echo('</div>
+    </div>');}
+    ?>
 </div>
 
 </body>

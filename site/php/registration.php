@@ -7,13 +7,13 @@ include 'connection.php';
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div>
     <form action="" method="post" class="aut_form">
         <div class="logo0">
-            <img src="LOGO.png" height="70px" alt="АРГО">
+            <img src="../image/LOGO.png" height="70px" alt="АРГО">
         </div>
         <div>Регистрация</div>
         <input name="name" type="text" placeholder="Введите логин" pattern="^[A-Za-zА-Яа-яЁё0-9\s\_]+$">
@@ -41,7 +41,7 @@ include 'connection.php';
             else{
                 $code = password_hash($pass, PASSWORD_DEFAULT);
                 $img_name = "default";
-                $img_tmp = addslashes(file_get_contents("LOGOplane1.png"));
+                $img_tmp = addslashes(file_get_contents("../image/LOGOplane1.png"));
                 $sql = "INSERT INTO `users` (id,name,pass,img_name,img_tmp) VALUES(
                         id,
                         '$name',

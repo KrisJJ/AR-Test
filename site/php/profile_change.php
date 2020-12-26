@@ -7,7 +7,18 @@ include 'connection.php';
 <head>
     <meta charset="UTF-8">
     <title>Редактирование профиля</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        let k = 0;
+        function exitAcc(){
+            document.location.href="index.php";
+        }
+        function loadMain(){
+            k++;
+            if (k%2==1) alert("Выход на главную страницу приведёт к удалению создаваемого квеста. Для перехода на главную страницу повторите нажатие на кнопку")
+            else document.location.href="profile.php";
+        }
+    </script>
 </head>
 <body>
 <div class="main">

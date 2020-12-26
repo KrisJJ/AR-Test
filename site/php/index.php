@@ -18,13 +18,13 @@ $_SESSION['name'] = "";
 <head>
     <meta charset="UTF-8">
     <title>Вход в аккаунт</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div>
         <form action="" method="post" class="aut_form">
             <div class="logo0">
-                <img src="LOGO.png" height="70px" alt="АРГО">
+                <img src="../image/LOGO.png" height="70px" alt="АРГО">
             </div>
             <div>Вход в систему</div>
             <input name="name" type="text" placeholder="Логин">

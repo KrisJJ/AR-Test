@@ -1,5 +1,5 @@
 body{
-    background-image: url("Back.jpg");
+    background-image: url("../image/Back.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -13,6 +13,7 @@ button{
     background-color: rosybrown;
     margin-bottom: 20px;
     cursor: pointer;
+    max-width: 90%;
 }
 
 button:hover{
@@ -70,7 +71,7 @@ button:active{
 }
 
 .left{
-    width: 25%;
+    width: 26%;
     display: inline-block;
     background-color: #FFFFFF;
     border-radius: 8px;
@@ -79,7 +80,7 @@ button:active{
 }
 
 .right{
-    width: 74%;
+    width: 73%;
     margin-left: 5px;
     display: inline-block;
 }
@@ -101,6 +102,7 @@ button:active{
     border-radius: 8px;
     text-align: center;
     float: right;
+    cursor: pointer;
 }
 
 .list{

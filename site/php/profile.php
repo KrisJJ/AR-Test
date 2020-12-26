@@ -19,13 +19,19 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
 <head>
     <meta charset="UTF-8">
     <title>Профиль</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script>
         function newQuest(){
             document.location.href="create.php";
         }
         function exitAcc(){
             document.location.href="index.php";
+        }
+        function loadMain(){
+            document.location.href="profile.php";
+        }
+        function changeProfile(){
+            document.location.href="profile_change.php";
         }
     </script>
 </head>
@@ -50,16 +56,16 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                 <div class="user_img">
                     <img src="data:image/png;base64,'.base64_encode($img).'" width="200px" class="round">
                 </div>
-                <div><b>'.$name.'</b></div>
-                <div><a href="profile_change.php">Редактировать профиль</a></div>
+                <div style="margin-bottom: 15px;"><b>'.$name.'</b></div>
+                <button onclick="changeProfile()">Редактировать профиль</button>
                 <button onclick="exitAcc()">Выйти из аккаунта</button>
             </div>
                 <div class="right">     <!-------------------колонка квестов---------------->
                     <div class="head">
                         <p>Мои квесты</p>
                     </div>
-                    <div class="logo">
-                        <img src="LOGO.png" height="55px" alt="АРГО">
+                    <div class="logo" onclick="loadMain()">
+                        <img src="../image/LOGO.png" height="90%" alt="АРГО">
                     </div>
                 <div class="list">
         ');
