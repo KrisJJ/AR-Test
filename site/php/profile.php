@@ -33,6 +33,15 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
         function changeProfile(){
             document.location.href="profile_change.php";
         }
+        function openText(x){
+            var disp = document.getElementById(x).style.display;
+            if(disp=="none"){document.getElementById(x).style.display = "block";}
+            if(disp=="block"){document.getElementById(x).style.display = "none";}
+        }
+        function delQuest(x){
+            var str = "delete.php?id="+x;
+            document.location.href=str;
+        }
     </script>
 </head>
 <body>
@@ -82,11 +91,13 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                 <div class="stripe0"><b>
                     <div class="pict"></div>
                     <div class="name">Название</div>
-                    <div class="long">Дата окончания</div>
+                    <div class="long">Дата завершения</div>
                     <div class="text">Описание</div>
+                    <div class="del">Удалить</div>
                 </b></div>
                 ');
         while ($row = $res->fetch_assoc()){
+            $id = $row['id'];
             $name = $row['name'];
             $text = $row['text'];
             $img = $row['img_tmp'];
@@ -97,7 +108,7 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             switch($long){
                 case 'Бессрочно':
                     $flag = TRUE;
-                    $date = 'Бессрочно';
+                    $date = NULL;
                     break;
                 case '1 неделя':
                     $flag = FALSE;
@@ -137,12 +148,16 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                     echo('<div class="long">' . $date .', '.$time.'</div>');
                 }
                 else{
-                    echo('<div class="long">' . $date .'</div>');
+                    echo('<div class="long">Бессрочно</div>');
                 }
                 echo('
-                            <div class="text">' . $text . '</div>
+                            <div class="text" onclick="openText('.$id.')"></div>
+                            <div class="del" onclick="delQuest('.$id.')"></div>
                         </div>
-                        ');
+                        <div class="annot" id="'.$id.'" style="display:none;">
+                            <div>Описание: ' . $text . '</div>
+                        </div>
+                ');
             }
         }
     }
