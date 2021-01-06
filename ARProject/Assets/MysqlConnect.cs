@@ -1,21 +1,33 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine.SceneManagement;
 
 public class MysqlConnect : MonoBehaviour
 {
-
+	public GameObject Registration;
+	Dropdown m_Dropdown;
+	public GameObject Autorisation;
+	public GameObject Profile;
 	[SerializeField] private InputField userName;
 	[SerializeField] private InputField userPass;
 	[SerializeField] private InputField userEmail;
+	[SerializeField] private Text NameUser;
 	[SerializeField] private Text messageText;
 	[SerializeField] private Button register;
 	[SerializeField] private Button login;
 	[SerializeField] private string loginURL = "http://site.ru/login.php";
 	[SerializeField] private string registerURL = "http://site.ru/register.php";
 
+
+	//void Drop() 
+	//{
+	//	var dropdown = transform.GetComponent<Dropdown>();
+		
+	//	dropdown.options.Clear();
+	//}
 	void Awake()
 	{
 		userPass.contentType = InputField.ContentType.Password;
@@ -52,6 +64,12 @@ public class MysqlConnect : MonoBehaviour
 	void Message(string text)
 	{
 		messageText.text = text;
+		Debug.Log(this + " --> " + text);
+	}
+
+	void NameUs(string text)
+	{
+		NameUser.text = text;
 		Debug.Log(this + " --> " + text);
 	}
 
@@ -92,8 +110,14 @@ public class MysqlConnect : MonoBehaviour
 		{
 			if (string.Compare(www.text, "Success!") == 0) // получаем в ответе слово-ключ из файла login.php
 			{
-				Message("Успешный вход!");
-				SceneManager.LoadScene("profile");
+				Message("Успешный вход!  " + userName.text + " ");
+				//SceneManager.LoadScene("profile");
+				NameUs("Профиль " + userName.text + " ");
+				Autorisation.SetActive (false);
+				Registration.SetActive (false);
+				Profile.SetActive (true);
+				m_Dropdown.ClearOptions();
+
 			}
 			else
 			{

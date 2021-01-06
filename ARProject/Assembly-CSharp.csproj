@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{50BF2256-2427-6980-9F04-E334B7F2845E}</ProjectGuid>
+    <ProjectGuid>{6F3B1A3C-2B4E-0C02-BD08-AEF49C45C39A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -667,6 +667,9 @@
     <Reference Include="Unity.XR.ARCore">
       <HintPath>Library\ScriptAssemblies\Unity.XR.ARCore.dll</HintPath>
     </Reference>
+    <Reference Include="VuforiaScripts">
+      <HintPath>Library\ScriptAssemblies\VuforiaScripts.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.ARFoundation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.Editor.dll</HintPath>
     </Reference>
@@ -684,6 +687,9 @@
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="VuforiaEditorScripts">
+      <HintPath>Library\ScriptAssemblies\VuforiaEditorScripts.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
@@ -712,16 +718,10 @@
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="VuforiaScripts">
-      <HintPath>Library\ScriptAssemblies\VuforiaScripts.dll</HintPath>
-    </Reference>
-    <Reference Include="VuforiaEditorScripts">
-      <HintPath>Library\ScriptAssemblies\VuforiaEditorScripts.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="EditorMigrationScripts.csproj">
-      <Project>{F2F5FACA-CDA7-AD85-DB37-BD4D5D62DB7D}</Project>
+      <Project>{19415586-E1CB-980B-44B0-598AC55C196B}</Project>
       <Name>EditorMigrationScripts</Name>
     </ProjectReference>
   </ItemGroup>
