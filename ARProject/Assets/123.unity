@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 125218403}
   - component: {fileID: 125218402}
   m_Layer: 5
-  m_Name: Button
+  m_Name: RegistartionBut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 196787792}
   - component: {fileID: 196787791}
   m_Layer: 5
-  m_Name: InputField (2)
+  m_Name: pass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: 387078592}
   - component: {fileID: 387078591}
   - component: {fileID: 387078590}
+  - component: {fileID: 387078593}
   m_Layer: 5
   m_Name: Registration
   m_TagString: Untagged
@@ -721,6 +722,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387078588}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &387078593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387078588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07077f35cbb3c064c87f72708847a384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Registration: {fileID: 387078588}
+  m_Dropdown: {fileID: 832416935}
+  Autorisation: {fileID: 606558059}
+  Profile: {fileID: 1858549426}
+  userName: {fileID: 965451103}
+  userPass: {fileID: 196787791}
+  userEmail: {fileID: 444670472}
+  NameUser: {fileID: 1525258499}
+  messageText: {fileID: 1957804423}
+  QuestL: {fileID: 0}
+  register: {fileID: 125218402}
+  login: {fileID: 0}
+  loginURL: http://site.ru/login.php
+  registerURL: http://site.ru/register.php
+  QuestsURL: http://site.ru/quests.php
 --- !u!1 &397410645
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +841,7 @@ GameObject:
   - component: {fileID: 444670473}
   - component: {fileID: 444670472}
   m_Layer: 5
-  m_Name: InputField (1)
+  m_Name: mail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -941,6 +969,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444670470}
   m_CullTransparentMesh: 0
+--- !u!1 &466901823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466901826}
+  - component: {fileID: 466901825}
+  - component: {fileID: 466901824}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &466901824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466901823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &466901825
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466901823}
+  m_CullTransparentMesh: 0
+--- !u!224 &466901826
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466901823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1858549427}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.727, y: 115}
+  m_SizeDelta: {x: 220.11694, y: 48.37947}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &480098653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1389,6 @@ GameObject:
   - component: {fileID: 606558063}
   - component: {fileID: 606558062}
   - component: {fileID: 606558061}
-  - component: {fileID: 606558060}
   m_Layer: 5
   m_Name: Autorisation
   m_TagString: Untagged
@@ -1290,30 +1396,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &606558060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606558059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07077f35cbb3c064c87f72708847a384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Registration: {fileID: 387078588}
-  Autorisation: {fileID: 606558059}
-  Profile: {fileID: 1858549426}
-  userName: {fileID: 923328871}
-  userPass: {fileID: 1654641278}
-  userEmail: {fileID: 444670472}
-  NameUser: {fileID: 1525258499}
-  messageText: {fileID: 1957804423}
-  register: {fileID: 125218402}
-  login: {fileID: 1543255915}
-  loginURL: http://site.ru/login.php
-  registerURL: http://site.ru/register.php
 --- !u!64 &606558061
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1393,7 +1475,6 @@ RectTransform:
   - {fileID: 1543255914}
   - {fileID: 1570618634}
   - {fileID: 1785421480}
-  - {fileID: 1957804425}
   m_Father: {fileID: 2109105843}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1402,6 +1483,54 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.0002746582}
   m_SizeDelta: {x: 479.99988, y: 799.99927}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &689687048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 689687049}
+  - component: {fileID: 689687050}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &689687049
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689687048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1858549427}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &689687050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689687048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed60dd178e5f654ab42c8278b5f7063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &730972110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,7 +1731,7 @@ GameObject:
   - component: {fileID: 832416936}
   - component: {fileID: 832416935}
   m_Layer: 5
-  m_Name: Dropdown
+  m_Name: m_Dropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2103,7 +2232,7 @@ GameObject:
   - component: {fileID: 965451104}
   - component: {fileID: 965451103}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: username
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2470,7 +2599,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1165187912}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 689687050}
+        m_TargetAssemblyTypeName: Load, Assembly-CSharp
+        m_MethodName: PlayPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1165187912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3161,7 +3302,7 @@ GameObject:
   - component: {fileID: 1543255916}
   - component: {fileID: 1543255915}
   m_Layer: 5
-  m_Name: Button
+  m_Name: AutorisBut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4100,7 +4241,6 @@ GameObject:
   - component: {fileID: 1858549431}
   - component: {fileID: 1858549430}
   - component: {fileID: 1858549429}
-  - component: {fileID: 1858549428}
   m_Layer: 5
   m_Name: Profile
   m_TagString: Untagged
@@ -4123,6 +4263,8 @@ RectTransform:
   - {fileID: 1616039974}
   - {fileID: 1525258498}
   - {fileID: 832416934}
+  - {fileID: 466901826}
+  - {fileID: 689687049}
   m_Father: {fileID: 2109105843}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4131,30 +4273,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.0002746582}
   m_SizeDelta: {x: 479.99988, y: 799.99927}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1858549428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858549426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07077f35cbb3c064c87f72708847a384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Registration: {fileID: 0}
-  Autorisation: {fileID: 0}
-  Profile: {fileID: 0}
-  userName: {fileID: 0}
-  userPass: {fileID: 0}
-  userEmail: {fileID: 444670472}
-  NameUser: {fileID: 0}
-  messageText: {fileID: 0}
-  register: {fileID: 125218402}
-  login: {fileID: 1165187911}
-  loginURL: http://site.ru/login.php
-  registerURL: http://site.ru/register.php
 --- !u!64 &1858549429
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4402,14 +4520,14 @@ RectTransform:
   m_GameObject: {fileID: 1957804422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000168, y: 1.0000168, z: 1.0000168}
   m_Children: []
-  m_Father: {fileID: 606558064}
-  m_RootOrder: 5
+  m_Father: {fileID: 2109105843}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.44972, y: -100}
+  m_AnchoredPosition: {x: 0.000064254, y: -367}
   m_SizeDelta: {x: 342.21536, y: 91.90512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1969701368
@@ -4756,6 +4874,7 @@ GameObject:
   - component: {fileID: 2109105842}
   - component: {fileID: 2109105841}
   - component: {fileID: 2109105840}
+  - component: {fileID: 2109105844}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4837,6 +4956,7 @@ RectTransform:
   - {fileID: 387078589}
   - {fileID: 606558064}
   - {fileID: 1858549427}
+  - {fileID: 1957804425}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4845,3 +4965,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2109105844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109105839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07077f35cbb3c064c87f72708847a384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Registration: {fileID: 387078588}
+  m_Dropdown: {fileID: 832416935}
+  Autorisation: {fileID: 606558059}
+  Profile: {fileID: 1858549426}
+  userName: {fileID: 923328871}
+  userPass: {fileID: 1654641278}
+  userEmail: {fileID: 444670472}
+  NameUser: {fileID: 1525258499}
+  messageText: {fileID: 1957804423}
+  QuestL: {fileID: 466901824}
+  register: {fileID: 125218402}
+  login: {fileID: 1543255915}
+  loginURL: http://site.ru/login.php
+  registerURL: http://site.ru/register.php
+  QuestsURL: http://site.ru/quests.php

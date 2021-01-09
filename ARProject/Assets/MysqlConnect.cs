@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class MysqlConnect : MonoBehaviour
 {
 	public GameObject Registration;
-	Dropdown m_Dropdown;
+	public Dropdown m_Dropdown;
 	public GameObject Autorisation;
 	public GameObject Profile;
 	[SerializeField] private InputField userName;
@@ -16,16 +16,19 @@ public class MysqlConnect : MonoBehaviour
 	[SerializeField] private InputField userEmail;
 	[SerializeField] private Text NameUser;
 	[SerializeField] private Text messageText;
+	[SerializeField] private Text QuestL;
 	[SerializeField] private Button register;
 	[SerializeField] private Button login;
 	[SerializeField] private string loginURL = "http://site.ru/login.php";
 	[SerializeField] private string registerURL = "http://site.ru/register.php";
+	[SerializeField] private string QuestsURL = "http://site.ru/quests.php";
+
 
 
 	//void Drop() 
 	//{
 	//	var dropdown = transform.GetComponent<Dropdown>();
-		
+
 	//	dropdown.options.Clear();
 	//}
 	void Awake()
@@ -33,6 +36,7 @@ public class MysqlConnect : MonoBehaviour
 		userPass.contentType = InputField.ContentType.Password;
 		register.onClick.AddListener(() => { Register(); });
 		login.onClick.AddListener(() => { Login(); });
+		login.onClick.AddListener(() => { Quest(); });
 	}
 
 	bool IsValidEmail(string email) // валидация email
@@ -72,7 +76,18 @@ public class MysqlConnect : MonoBehaviour
 		NameUser.text = text;
 		Debug.Log(this + " --> " + text);
 	}
+	void QuestList(string text)
+	{
+		QuestL.text = text;
+		Debug.Log(this + " --> " + text);
+	}
 
+	void Quest() {
+		WWWForm form = new WWWForm();
+		form.AddField("name", userName.text);
+		WWW www = new WWW(QuestsURL, form);
+		StartCoroutine(QuestFunc(www));
+	}
 	void Login()
 	{
 		if (!IsValid(userName.text, 3, 15, "Имя") || !IsValid(userPass.text, 6, 20, "Пароль")) return;
@@ -102,6 +117,12 @@ public class MysqlConnect : MonoBehaviour
 		StartCoroutine(RegisterFunc(www));
 	}
 
+	IEnumerator QuestFunc(WWW www)
+	{	
+		yield return www;
+		QuestList(www.text);
+		m_Dropdown.options.Add(new Dropdown.OptionData(www.text));
+	}
 	IEnumerator LoginFunc(WWW www)
 	{
 		yield return www;
@@ -110,13 +131,12 @@ public class MysqlConnect : MonoBehaviour
 		{
 			if (string.Compare(www.text, "Success!") == 0) // получаем в ответе слово-ключ из файла login.php
 			{
-				Message("Успешный вход!  " + userName.text + " ");
-				//SceneManager.LoadScene("profile");
+				//Message("Успешный вход!  " + userName.text + " ");
 				NameUs("Профиль " + userName.text + " ");
+				m_Dropdown.options.Clear();
 				Autorisation.SetActive (false);
 				Registration.SetActive (false);
 				Profile.SetActive (true);
-				m_Dropdown.ClearOptions();
 
 			}
 			else
