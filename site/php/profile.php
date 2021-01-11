@@ -21,6 +21,7 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
     <title>Профиль</title>
     <link rel="stylesheet" href="../css/style.css">
     <script>
+        let c = 0;
         function newQuest(){
             document.location.href="create.php";
         }
@@ -39,8 +40,14 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             if(disp=="block"){document.getElementById(x).style.display = "none";}
         }
         function delQuest(x){
-            var str = "delete.php?id="+x;
-            document.location.href=str;
+            if (x==c) {
+                let str = "delete.php?id="+x;
+                document.location.href=str;
+            }
+            else {
+                c = x;
+                alert("Вы точно хотите удалить выбранный квест? Для удаления повторите нажатие на кнопку");
+            }
         }
     </script>
 </head>

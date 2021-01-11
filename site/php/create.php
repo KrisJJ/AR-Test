@@ -78,29 +78,43 @@ else {
         <div class="list">
             <form action="" method="post">
                 <div class="col1">
-                    <p>Название</p>
-                    <input type="text" name="name" placeholder="Введите название вашего квеста">
-                    <p>Описание</p>
-                    <input type="text" name="text" placeholder="Введите описание вашего квеста">
-                    <p>День</p>
-                    <input type="date" name="date">
-                    <p>Время начала</p>
-                    <input type="time" name="time">
+                    <div style="display:block;">
+                        <p>Название</p>
+                        <input type="text" name="name" size="40" placeholder="Введите название вашего квеста">
+                    </div>
+                    <div style="display:block;">
+                        <p>Описание</p>
+                        <textarea name="text" cols="40" rows="5" placeholder="Введите описание вашего квеста" style="resize:none;"></textarea>
+                    </div>
                 </div>
                 <div class="col2">
                     <p>Обложка</p>
                     <input type="file" name="img" accept="image/*">
                     <input type="checkbox" name="def" checked="true" >Выбрать обложку по умолчанию
-                    <p>Длительность</p>
-                    <input list="long" name="long" value="Бесконечно">
-                    <datalist id="long">
-                        <option>Бессрочно</option>
-                        <option>1 неделя</option>
-                        <option>2 недели</option>
-                        <option>3 недели</option>
-                        <option>1 месяц</option>
-                    </datalist>
-                    <input type="submit" name="next" value="Дальше">
+                </div>
+                <div class="fdown">
+                    <div class="fdate">
+                        <p>День</p>
+                        <input type="date" name="date">
+                    </div>
+                    <div class="ftime">
+                        <p>Время начала</p>
+                        <input type="time" name="time">
+                    </div>
+                    <div class="flong">
+                        <p>Длительность</p>
+                        <input list="long" name="long">
+                        <datalist id="long">
+                            <option>Бессрочно</option>
+                            <option>1 неделя</option>
+                            <option>2 недели</option>
+                            <option>3 недели</option>
+                            <option>1 месяц</option>
+                        </datalist>
+                    </div>
+                </div>
+                <div class="fnext">
+                    <button name="next">Далее</button>
                 </div>
             </form>');
     if (isset($_POST['next'])) {

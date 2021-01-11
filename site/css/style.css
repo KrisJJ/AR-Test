@@ -28,7 +28,6 @@ button:active{
     outline: none;
     background-color: pink;
 }
-
 /*---------------------------registration----------------------------*/
 
 .aut_form{
@@ -52,13 +51,43 @@ button:active{
 /*------------------------------create-------------------------------*/
 
 .col1{
-    width: 59%;
+    width: 50%;
     display: inline-block;
+    text-align: left;
 }
 
 .col2{
     width: 30%;
     display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+
+.fdown{
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+}
+
+.fdate{
+    display:inline-block;
+}
+
+.ftime{
+    display:inline-block;
+    margin-left: 5%;
+}
+
+.flong{
+    display:inline-block;
+    margin-left: 5%;
+}
+
+.fnext{
+    display: inline-block;
+    width: 80%;
+    text-align: right;
+    margin-top: 20px;
 }
 
 /*--------------------------------main------------------------------*/
@@ -112,6 +141,9 @@ button:active{
     background-color: #FFFFFF;
     text-align: center;
     border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: auto;
 }
 
 .user_img{
@@ -138,7 +170,7 @@ button:active{
     text-align: center;
     border-radius: 8px;
     border: solid black 1px;
-    margin: 5px auto;
+    margin: 10px auto;
 }
 
 .pict{
@@ -152,12 +184,14 @@ button:active{
 
 .name{
     height: 99%;
-    width: 25%;
+    width: 28%;
     display: inline-block;
-    margin-left: 5%;
+    margin-left: 2%;
     vertical-align: middle;
     padding-top: 5px;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .long{
@@ -194,18 +228,33 @@ button:active{
 }
 
 .annot{
-    width: 100%;
+    width: 90%;
     height: auto;
-    margin: 2% 5%;
+    margin: 2% auto;
     display: block;
-    text-align: justify;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /*------------------------------------map--------------------------------------*/
 
 #map{
     width: 90%;
-    height: 90%;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    height: 80%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.colmap{
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+}
+
+.coltag{
+    width: 30%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
 }
