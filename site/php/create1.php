@@ -10,6 +10,7 @@ include 'connection.php';
     <link rel="stylesheet" href="../css/style.css">
     <script>
         let k = 0;
+        let i = 1;
         function exitAcc(){
             document.location.href="index.php";
         }
@@ -25,24 +26,28 @@ include 'connection.php';
             document.location.href="profile_change.php";
         }
         function openIntro(){
-
+            document.getElementById("coltag").style.display = "none";
+            document.getElementById("colmap").style.display = "none";
+            document.getElementById("help").style.display = "inline-block";
         }
-        let i = 1;
-        let intex = document.getElementById(i).value;
-        alert(intex);
-        /*if(intex!==""){
+        function closeIntro(){
+            document.getElementById("coltag").style.display = "inline-block";
+            document.getElementById("colmap").style.display = "inline-block";
+            document.getElementById("help").style.display = "none";
+        }
+        function moreTags(){
+            i += 1;
             let p = document.createElement('p');
             p.innerHTML = "Место №" + i;
-            document.form.append(p);
+            document.getElementById("form").append(p);
             let d = document.createElement('input');
             d.type = "text";
             d.name = i;
             d.id = i;
             d.placeholder = "Вставьте координаты";
             d.value = "";
-            document.form.append(d);
-            i += 1;
-        }*/
+            document.getElementById("form").append(d);
+        }
     </script>
 </head>
 <body>
@@ -80,20 +85,42 @@ else{
             <img src="../image/LOGO.png" height="90%" alt="АРГО">
         </div>
         <div class="list">
-            <div class="coltag">
-                <form action="" method="post">
+            <div id="coltag" style="display:inline-block;">
+                <form action="" method="post" id="form">
                     <p>Место №'.$x.'</p>
-                    <input type="text" name="'.$x.'" id="'.$x.'" placeholder="Вставьте координаты" value="">
+                    <input type="text" name="'.$x.'" id="'.$x.'" placeholder="Вставьте координаты">
                 </form>
+                <button onclick="moreTags()">Больше мест</button>
             </div>
-            <div class="colmap">
+            <div id="colmap" style="display:inline-block;">
                 <!--noindex--><iframe id="map" src="https://bestmaps.ru/map/osm/map/11/43.0877/131.8993" name="iframe" scrolling="auto"></iframe><!--/noindex-->
                 <button onclick="openIntro()">Инструкция по использованию карты</button>
+                <button name="fin" onclick="" form="form">Завершить</button>
+            </div>
+            <div id="help" style="display:none;">
+                <div>Инструкция по использоваию карты</div>
+                <button onclick="closeIntro()">Закрыть инструкцию</button>
             </div>
         </div>
-        
     </div>
     ');}
+    if (isset($_POST['fin'])){
+        $str = "";
+        $num = 0;
+        foreach($_POST as $a){
+            if(!empty($a)){
+                if(preg_match("|^[\d]*\.[\d]*\, [\d]*\.[\d]*$|", $a)){
+                    $num += 1;
+                    $str = $str.";".$a;
+                }
+            }
+        }
+        unset($a);
+        $str = substr($str, 1);
+        $sql = "UPDATE `quests` SET geotags='$str', numtags='$num' WHERE id='$quest'";
+        $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
+        echo('<script>document.location.href="profile.php"</script>');
+    }
     ?>
 </div>
 </body>

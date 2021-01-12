@@ -86,6 +86,10 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                 <div class="list">
         ');
     $creator = $_SESSION['name'];
+    $sql = "SELECT `id` FROM `users` WHERE name='$creator'";
+        $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
+        $row = $res->fetch_array(MYSQLI_ASSOC);
+        $creator = $row['id'];
     $sql = "SELECT * FROM `quests` WHERE creator='$creator'";
     $res = mysqli_query($conn, $sql) or die("Error: ".mysqli_error($conn));
     if(mysqli_num_rows($res)==0){
@@ -111,6 +115,7 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             $date = $row['date'];
             $time = $row['time'];
             $long = $row['longing'];
+            $num = $row['numtags'];
             $flag = TRUE;
             switch($long){
                 case 'Бессрочно':
@@ -163,6 +168,7 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                         </div>
                         <div class="annot" id="'.$id.'" style="display:none;">
                             <div>Описание: ' . $text . '</div>
+                            <div>Задействовано мест: ' . $num . '</div>
                         </div>
                 ');
             }

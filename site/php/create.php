@@ -9,7 +9,9 @@ $query = "CREATE TABLE IF NOT EXISTS `quests`(
         date DATE,
         time TIME,
         longing TEXT,
-        creator TEXT,
+        creator INT,
+        numtags INT,
+        geotags TEXT,
         PRIMARY KEY(id)
     )";
 $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
@@ -131,6 +133,11 @@ else {
         }
         $long = $_POST['long'];
         $creator = $_SESSION['name'];
+        $sql = "SELECT id FROM `users` WHERE name='$creator'";
+        $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
+        $row = $res->fetch_array(MYSQLI_ASSOC);
+        $creator = $row['id'];
+
         $sql = "INSERT INTO `quests` (id,name,text,date,time,longing,creator) VALUES(
                     id,
                     '$name',

@@ -7,7 +7,7 @@ body{
 }
 
 button{
-    padding: 8px 48px;
+    padding: 8px 40px;
     border-radius: 8px;
     border: 0px;
     background-color: rosybrown;
@@ -240,21 +240,32 @@ button:active{
 /*------------------------------------map--------------------------------------*/
 
 #map{
-    width: 90%;
-    height: 80%;
+    width: 93%;
+    height: 83%;
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-.colmap{
-    width: 50%;
+#colmap{
+    width: 65%;
+    height: 100%;
     display: inline-block;
-    text-align: left;
+    text-align: center;
 }
 
-.coltag{
-    width: 30%;
+#coltag{
+    width: 27%;
+    height: 100%;
     display: inline-block;
     text-align: left;
     vertical-align: top;
+    margin-left: 2%;
+    overflow: auto;
+}
+
+#help{
+    width: 90%;
+    height: 90%;
+    display: none;
+    background-color: #000110;
 }
