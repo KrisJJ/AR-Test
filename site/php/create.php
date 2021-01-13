@@ -64,9 +64,9 @@ else {
     $img = $row['img_tmp'];
     echo('
                 <div class="user_img">
-                    <img src="data:image/png;base64,'.base64_encode($img).'" width="200px" class="round">
+                    <img src="data:meta/png;base64,'.base64_encode($img).'" width="200px" class="round">
                 </div>
-                <div style="margin-bottom: 15px;"><b>'.$name.'</b></div>
+                <div style="margin-bottom: 15px;"><b>'.$name. '</b></div>
                 <button onclick="changeProfile()">Редактировать профиль</button>
                 <button onclick="exitAcc()">Выйти из аккаунта</button>
             </div>
@@ -75,7 +75,7 @@ else {
             <p>Создать квест</p>
         </div>
         <div class="logo" onclick="loadMain()">
-            <img src="../image/LOGO.png" height="90%" alt="АРГО">
+            <img src="../meta/LOGO.png" height="90%" alt="АРГО">
         </div>
         <div class="list">
             <form action="" method="post">
@@ -91,7 +91,7 @@ else {
                 </div>
                 <div class="col2">
                     <p>Обложка</p>
-                    <input type="file" name="img" accept="image/*">
+                    <input type="file" name="img" accept="meta/*">
                     <input type="checkbox" name="def" checked="true" >Выбрать обложку по умолчанию
                 </div>
                 <div class="fdown">

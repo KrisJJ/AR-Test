@@ -71,7 +71,7 @@ else{
     $x = 1;
     echo('
                 <div class="user_img">
-                    <img src="data:image/png;base64,'.base64_encode($img).'" width="200px" class="round">
+                    <img src="data:meta/png;base64,'.base64_encode($img).'" width="200px" class="round">
                 </div>
                 <div style="margin-bottom: 15px;"><b>'.$name.'</b></div>
                 <button onclick="changeProfile()">Редактировать профиль</button>
@@ -81,13 +81,13 @@ else{
         <div class="head">
             <p>Создать квест</p>
         </div>
-        <div class="logo" onclick="loadMain('.$quest.')">
-            <img src="../image/LOGO.png" height="90%" alt="АРГО">
+        <div class="logo" onclick="loadMain('.$quest. ')">
+            <img src="../meta/LOGO.png" height="90%" alt="АРГО">
         </div>
         <div class="list">
             <div id="coltag" style="display:inline-block;">
                 <form action="" method="post" id="form">
-                    <p>Место №'.$x.'</p>
+                    <p>Место №' .$x.'</p>
                     <input type="text" name="'.$x.'" id="'.$x.'" placeholder="Вставьте координаты">
                 </form>
                 <button onclick="moreTags()">Больше мест</button>

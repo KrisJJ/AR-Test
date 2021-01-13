@@ -56,10 +56,11 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
     <?php
     $name = $_SESSION['name'];
     if($name==null){
-        echo('
-            <div>Вы вышли из аккаунта</div>
-            <div>Войдите в аккаунт, чтобы иметь возможность работать с квестами</div>
-            <button onclick="exitAcc()">Войти в аккаунт</button>
+        echo('<div>
+                <div>Вы вышли из аккаунта</div>
+                <div>Войдите в аккаунт, чтобы иметь возможность работать с квестами</div>
+                <button onclick="exitAcc()">Войти в аккаунт</button>
+            </div>
         ');
     }
     else{
@@ -70,18 +71,18 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
         $img = $row['img_tmp'];
         echo('
                 <div class="user_img">
-                    <img src="data:image/png;base64,'.base64_encode($img).'" width="200px" class="round">
+                    <img src="data:meta/png;base64,'.base64_encode($img).'" width="170px" class="round">
                 </div>
-                <div style="margin-bottom: 15px;"><b>'.$name.'</b></div>
-                <button onclick="changeProfile()">Редактировать профиль</button>
+                <div class="login"><b>'.$name. '</b><br>
+                <a onclick="changeProfile()">Редактировать профиль</a></div>
                 <button onclick="exitAcc()">Выйти из аккаунта</button>
             </div>
                 <div class="right">     <!-------------------колонка квестов---------------->
                     <div class="head">
-                        <p>Мои квесты</p>
+                        <div class="headtext">Мои квесты</div>
                     </div>
                     <div class="logo" onclick="loadMain()">
-                        <img src="../image/LOGO.png" height="90%" alt="АРГО">
+                        <img src="../meta/LOGO.png" height="90%" alt="АРГО">
                     </div>
                 <div class="list">
         ');
@@ -93,8 +94,10 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
     $sql = "SELECT * FROM `quests` WHERE creator='$creator'";
     $res = mysqli_query($conn, $sql) or die("Error: ".mysqli_error($conn));
     if(mysqli_num_rows($res)==0){
-        echo('<p>Вы еще не создали ни одного квеста</p>
-                    <p>Начните прямо сейчас!</p>
+        echo('<div class="emptylist">
+                   <p>Вы еще не создали ни одного квеста<br>
+                   Начните прямо сейчас!</p>
+              </div>
                 ');
     }
     else{

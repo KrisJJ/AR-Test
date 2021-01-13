@@ -36,7 +36,7 @@ include 'connection.php';
         <input name="pass1" type="password" placeholder="Введите новый пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
         <input name="pass2" type="password" placeholder="Повторите новый пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
         <div>Изменить аватар</div>
-        <input name="img" type="file" accept="image/*">
+        <input name="img" type="file" accept="meta/*">
         <input name="conf" type="submit" value="Подтвердить изменения">
     </form>
     ');

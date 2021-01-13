@@ -10,22 +10,26 @@ include 'connection.php';
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<div>
+<div class="main">
     <form action="" method="post" class="aut_form">
         <div class="logo0">
-            <img src="../image/LOGO.png" height="70px" alt="АРГО">
+            <img src="../meta/LOGO.png" height="70px" alt="АРГО">
         </div>
-        <div>Регистрация</div>
-        <input name="name" type="text" placeholder="Введите логин" pattern="^[A-Za-zА-Яа-яЁё0-9\s\_]+$">
-        <input name="pass" type="password" placeholder="Введите пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
-        <input name="pass1" type="password" placeholder="Повторите пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
-        <input name="reg" type="submit" value="Зарегистрироваться">
-        <div>Уже зарегистрированы?</div>
-        <div><a href="index.php">Войти в аккаунт</a></div>
+        <div>
+            <p>Регистрация</p>
+            <input name="name" type="text" placeholder="Имя пользователя" pattern="^[A-Za-zА-Яа-яЁё0-9\s\_]+$" required>
+            <input name="email" type="email" placeholder="Email" pattern="^[A-Za-zА-Яа-яЁё0-9\s\_\@]+$" required>
+            <input name="pass" type="password" placeholder="Пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$" required>
+            <input name="pass1" type="password" placeholder="Повторите пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$" required>
+        </div>
+        <button name="reg"  style="padding: 8px 17px;">Зарегистрироваться</button>
+        <div class="wannareg">Уже зарегистрированы?<br>
+        <a href="index.php">Войдите в аккаунт</a></div>
     </form>
     <?php
     if(isset($_POST['reg'])){
         $name = $_POST['name'];
+        $email = $_POST['email'];
         $pass = $_POST['pass'];
         $pass1 = $_POST['pass1'];
         $sql = "SELECT * FROM `users` WHERE name='$name'";
@@ -41,7 +45,7 @@ include 'connection.php';
             else{
                 $code = password_hash($pass, PASSWORD_DEFAULT);
                 $img_name = "default";
-                $img_tmp = addslashes(file_get_contents("../image/LOGOplane1.png"));
+                $img_tmp = addslashes(file_get_contents("../meta/LOGOplane1.png"));
                 $sql = "INSERT INTO `users` (id,name,pass,img_name,img_tmp) VALUES(
                         id,
                         '$name',
