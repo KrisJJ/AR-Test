@@ -79,6 +79,7 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             </div>
                 <div class="right">     <!-------------------колонка квестов---------------->
                     <div class="head">
+                        <div><img src="../meta/Profile.png" height="90%"></div>
                         <div class="headtext">Мои квесты</div>
                     </div>
                     <div class="logo" onclick="loadMain()">
