@@ -6,7 +6,7 @@ include 'connection.php';
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Создать квест</title>
+    <title>Задать места</title>
     <link rel="stylesheet" href="../css/style.css">
     <script>
         let k = 0;
@@ -56,10 +56,11 @@ include 'connection.php';
 $name = $_SESSION['name'];
 $quest = $_SESSION['quest_id'];
 if($name==null){
-    echo('
-            <div>Вы вышли из аккаунта</div>
-            <div>Войдите в аккаунт, чтобы иметь возможность работать с квестами</div>
-            <button onclick="exitAcc()">Войти в аккаунт</button>
+    echo('<div class="list">
+                <div style="margin-top:10%; margin-bottom:5%;">Вы вышли из аккаунта<br>
+                Войдите в аккаунт, чтобы иметь возможность работать с квестами</div>
+                <button onclick="exitAcc()">Войти в аккаунт</button>
+            </div>
         ');
 }
 else{
@@ -71,15 +72,16 @@ else{
     $x = 1;
     echo('
                 <div class="user_img">
-                    <img src="data:meta/png;base64,'.base64_encode($img).'" width="200px" class="round">
+                    <img src="data:meta/png;base64,'.base64_encode($img).'" width="170px" class="round">
                 </div>
-                <div style="margin-bottom: 15px;"><b>'.$name.'</b></div>
-                <button onclick="changeProfile()">Редактировать профиль</button>
-            <button onclick="exitAcc()">Выйти из аккаунта</button>
+                <div class="login"><b>'.$name. '</b><br>
+                <a onclick="changeProfile()">Редактировать профиль</a></div>
+                <button onclick="exitAcc()">Выйти из аккаунта</button>
             </div>
     <div class="right">
         <div class="head">
-            <p>Создать квест</p>
+            <div class="headimg"><img src="../meta/Create.png" height="30pt"></div>
+            <div class="headtext">Задать места</div>
         </div>
         <div class="logo" onclick="loadMain('.$quest. ')">
             <img src="../meta/LOGO.png" height="90%" alt="АРГО">
@@ -94,12 +96,18 @@ else{
             </div>
             <div id="colmap" style="display:inline-block;">
                 <!--noindex--><iframe id="map" src="https://bestmaps.ru/map/osm/map/11/43.0877/131.8993" name="iframe" scrolling="auto"></iframe><!--/noindex-->
-                <button onclick="openIntro()">Инструкция по использованию карты</button>
+                <button onclick="openIntro()" style="padding: 8px 20px;">Инструкция по использованию карты</button>
                 <button name="fin" onclick="" form="form">Завершить</button>
             </div>
             <div id="help" style="display:none;">
-                <div>Инструкция по использоваию карты</div>
-                <button onclick="closeIntro()">Закрыть инструкцию</button>
+                <div style="font-size:16pt;">Инструкция по использоваию карты</div>
+                <div class="helptext">Для работы с координатами откройте меню карты</div>
+                <div><img src="../meta/Help1.jpg" height="100%"></div>
+                <div class="helptext">Нажмите на кнопку "Центр карты", для того, чтобы точнее определить координаты места</div>
+                <div><img src="../meta/Help2.jpg" height="100%"></div>
+                <div class="helptext">Нажмите на кнопку "Lat, Lon:", чтобы скопировать координаты текущего центра карты. После этого вы можете вставить их в поле слева</div>
+                <div><img src="../meta/Help3.jpg" height="100%"></div>
+                <button onclick="closeIntro()" style="margin-top:10px;">Закрыть инструкцию</button>
             </div>
         </div>
     </div>
@@ -116,7 +124,7 @@ else{
             }
         }
         unset($a);
-        $str = substr($str, 1);
+        $str = substr($str, 1, strlen($str)-1);
         $sql = "UPDATE `quests` SET geotags='$str', numtags='$num' WHERE id='$quest'";
         $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
         echo('<script>document.location.href="profile.php"</script>');

@@ -36,7 +36,9 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
         }
         function openText(x){
             var disp = document.getElementById(x).style.display;
-            if(disp=="none"){document.getElementById(x).style.display = "block";}
+            if(disp=="none"){
+                document.getElementById(x).style.display = "block";
+            }
             if(disp=="block"){document.getElementById(x).style.display = "none";}
         }
         function delQuest(x){
@@ -56,9 +58,9 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
     <?php
     $name = $_SESSION['name'];
     if($name==null){
-        echo('<div>
-                <div>Вы вышли из аккаунта</div>
-                <div>Войдите в аккаунт, чтобы иметь возможность работать с квестами</div>
+        echo('<div class="list">
+                <div style="margin-top:10%; margin-bottom:5%;">Вы вышли из аккаунта<br>
+                Войдите в аккаунт, чтобы иметь возможность работать с квестами</div>
                 <button onclick="exitAcc()">Войти в аккаунт</button>
             </div>
         ');
@@ -79,7 +81,7 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             </div>
                 <div class="right">     <!-------------------колонка квестов---------------->
                     <div class="head">
-                        <div><img src="../meta/Profile.png" height="90%"></div>
+                        <div class="headimg"><img src="../meta/Profile.png" height="30pt"></div>
                         <div class="headtext">Мои квесты</div>
                     </div>
                     <div class="logo" onclick="loadMain()">
@@ -88,10 +90,10 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                 <div class="list">
         ');
     $creator = $_SESSION['name'];
-    $sql = "SELECT `id` FROM `users` WHERE name='$creator'";
+    /*$sql = "SELECT `id` FROM `users` WHERE name='$creator'";
         $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
         $row = $res->fetch_array(MYSQLI_ASSOC);
-        $creator = $row['id'];
+        $creator = $row['id'];*/
     $sql = "SELECT * FROM `quests` WHERE creator='$creator'";
     $res = mysqli_query($conn, $sql) or die("Error: ".mysqli_error($conn));
     if(mysqli_num_rows($res)==0){
@@ -115,7 +117,6 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             $id = $row['id'];
             $name = $row['name'];
             $text = $row['text'];
-            $img = $row['img_tmp'];
             $date = $row['date'];
             $time = $row['time'];
             $long = $row['longing'];
@@ -155,9 +156,13 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                 $setdate = date_create($setdate);
             }
             if($flag==TRUE||$setdate>$curdate) {
+                $sql1 = "SELECT `img_tmp` FROM `quests_cover` WHERE id='$id'";
+                $res1 = mysqli_query($conn, $sql1) or die('Ошибка: ' . mysqli_error($conn));
+                $row1 = $res1->fetch_array(MYSQLI_ASSOC);
+                $img = $row1['img_tmp'];
                 echo('
                         <div class="stripe">
-                            <div class="pict">' . $img . '</div>
+                            <div class="pict"><img src="data:meta/png;base64,'.base64_encode($img).'" width="32px" class="round" style="transform:translate(0,-6px)"></div>
                             <div class="name">' . $name . '</div>
                         ');
                 if($flag==FALSE){
@@ -167,8 +172,8 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                     echo('<div class="long">Бессрочно</div>');
                 }
                 echo('
-                            <div class="text" onclick="openText('.$id.')"></div>
-                            <div class="del" onclick="delQuest('.$id.')"></div>
+                            <div class="text"><img src="../meta/Down.png" height="20pt" onclick="openText('.$id.')" style="cursor:pointer;"></div>
+                            <div class="del"><img src="../meta/Delete.png" height="25pt" onclick="delQuest('.$id.')" style="cursor:pointer; transform:translate(0,-2px)"></div>
                         </div>
                         <div class="annot" id="'.$id.'" style="display:none;">
                             <div>Описание: ' . $text . '</div>

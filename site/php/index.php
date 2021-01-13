@@ -46,7 +46,7 @@ $_SESSION['name'] = "";
             if($row==null){
                 echo('Пользователя с таким именем не существует');
             }
-            if(password_verify($pass, $row['pass'])){
+            if(md5($pass) === $row['pass']){
                 $_SESSION['name'] = $name;
                 echo('<script>document.location.href="profile.php"</script>');
             }

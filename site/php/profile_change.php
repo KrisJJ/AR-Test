@@ -27,18 +27,21 @@ include 'connection.php';
     $sql = "SELECT * FROM `users` WHERE name='$name'";
     $res = mysqli_query($conn,$sql) or die("Error: ".mysqli_error($conn));
     $row = $res->fetch_array(MYSQLI_ASSOC);
-    echo('
-        <form action="" method="post" class="" enctype="multipart/form-data">
-        <div>Изменить имя пользователя (только буквы, цифры, пробел, нижнее подчеркивание)</div>
-        <input name="name" type="text" value="'.$name.'" pattern="^[A-Za-zА-Яа-яЁё0-9\s\_]+$">
-        <div>Изменить пароль (только буквы, цифры, нижнее подчеркивание)</div>
-        <input name="pass0" type="password" placeholder="Введите старый пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
-        <input name="pass1" type="password" placeholder="Введите новый пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
-        <input name="pass2" type="password" placeholder="Повторите новый пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
-        <div>Изменить аватар</div>
-        <input name="img" type="file" accept="meta/*">
-        <input name="conf" type="submit" value="Подтвердить изменения">
-    </form>
+    echo('<div class="list">
+            <form action="" method="post" id="chgform" style="text-align: left; display: inline-block; margin-top: 2%;" enctype="multipart/form-data">
+            <div class="crealabel">Изменить имя пользователя (только буквы, цифры, пробел, нижнее подчёркивание)</div>
+            <input name="name" type="text" value="'.$name.'" pattern="^[A-Za-zА-Яа-яЁё0-9\s\_]+$">
+            <div class="crealabel">Изменить пароль (только буквы, цифры, нижнее подчёркивание)</div>
+            <input name="pass0" type="password" placeholder="Введите старый пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
+            <input name="pass1" type="password" placeholder="Введите новый пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
+            <input name="pass2" type="password" placeholder="Повторите новый пароль" pattern="^[А-Яа-яЁёa-zA-Z0-9\_]+$">
+            <div class="crealabel">Изменить электронную почту</div> 
+            <input name="email" type="email" placeholder="Введите новый email" pattern="^[A-Za-zА-Яа-яЁё0-9\s\_\@]+$">
+            <div class="crealabel">Изменить аватар</div>
+            <input name="img" type="file" accept="image/*">
+        </form>
+        <button name="conf" form="chgform">Подтвердить изменения</button>
+    </div>
     ');
     if(isset($_POST['conf'])){
         $flag = TRUE;
@@ -57,9 +60,9 @@ include 'connection.php';
         }
         $pass = $row['pass'];
         if($_POST['pass1']!=null){
-            if(password_verify($_POST['pass0'], $pass)){
+            if($pass === md5($_POST['pass0'])){
                 if($_POST['pass1']==$_POST['pass2']){
-                    $pass = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
+                    $pass = md5($_POST['pass1']);
                     if($flag==TRUE){
                         $sql = "UPDATE `users` SET pass='$pass' WHERE id='$id'";
                         $res = mysqli_query($conn,$sql) or die("Error: ".mysqli_error($conn));
@@ -75,6 +78,11 @@ include 'connection.php';
                 echo('Ошибка в пароле. Старый пароль введен неверно');
             }
         }
+        $email = $_POST['email'];
+        if($email!=null){
+            $sql = "UPDATE `users` SET email='$email' WHERE id='$id'";
+            $res = mysqli_query($conn,$sql) or die("Error: ".mysqli_error($conn));
+        }
         if($_FILES['img']['name']!=null){
             if($flag==TRUE){
                 $img_name = $_FILES['img']['name'];
@@ -86,6 +94,7 @@ include 'connection.php';
         if($flag==TRUE){
             echo('<script>document.location.href="profile.php"</script>');
         }
+        echo($flag);
     }
     ?>
 

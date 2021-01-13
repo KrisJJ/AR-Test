@@ -43,13 +43,14 @@ include 'connection.php';
                 echo('Ошибка в пароле. Повторите ввод или выберите другой пароль');
             }
             else{
-                $code = password_hash($pass, PASSWORD_DEFAULT);
+                $code = md5($pass);
                 $img_name = "default";
                 $img_tmp = addslashes(file_get_contents("../meta/LOGOplane1.png"));
-                $sql = "INSERT INTO `users` (id,name,pass,img_name,img_tmp) VALUES(
+                $sql = "INSERT INTO `users` (id,name,pass,email,img_name,img_tmp) VALUES(
                         id,
                         '$name',
                         '$code',
+                        '$email',
                         '$img_name',
                         '$img_tmp'
                     )";
