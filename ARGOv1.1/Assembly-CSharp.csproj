@@ -531,6 +531,7 @@
     <Compile Include="Assets\MapboxAR\Unity\Ar\SnapAlignmentStrategy.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\Utilities\PlotRoute.cs" />
     <Compile Include="Assets\Menu\scripts\CoorProc.cs" />
+    <Compile Include="Assets\Menu\scripts\Mail.cs" />
     <Compile Include="Assets\Menu\scripts\MysqlConnect.cs" />
     <Compile Include="Assets\Menu\scripts\Restart.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteDevice.cs" />

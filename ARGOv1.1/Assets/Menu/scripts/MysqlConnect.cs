@@ -12,14 +12,16 @@ public class MysqlConnect : MonoBehaviour
 	public Dropdown m_Dropdown;
 	public GameObject Autorisation;
 	public GameObject Profile;
-	[SerializeField] private InputField userName;
+    [SerializeField] public Text Email;
+    [SerializeField] private InputField userName;
 	[SerializeField] private InputField userPass;
 	[SerializeField] private InputField userEmail;
 	[SerializeField] private Text NameUser;
 	[SerializeField] private Text messageText;
 	[SerializeField] private Button register;
 	[SerializeField] private Button login;
-	[SerializeField] private string loginURL = "http://localhost/login.php";
+    [SerializeField] private string EmailURL = "http://localhost/email.php";
+    [SerializeField] private string loginURL = "http://localhost/login.php";
 	[SerializeField] private string registerURL = "http://localhost/register.php";
 	[SerializeField] private string QuestsURL = "http://localhost/quests.php";
 
@@ -30,7 +32,8 @@ public class MysqlConnect : MonoBehaviour
 		register.onClick.AddListener(() => { Register(); });
 		login.onClick.AddListener(() => { Login(); });
 		login.onClick.AddListener(() => { Quest(); });
-	}
+        login.onClick.AddListener(() => { EmailFind(); });
+    }
 
 	bool IsValidEmail(string email) // валидация email
 	{
@@ -58,7 +61,12 @@ public class MysqlConnect : MonoBehaviour
 		return true;
 	}
 
-	void Message(string text)
+    void Emailtextt(string text)
+    {
+        Email.text = text;
+        Debug.Log(this + " --> " + text);
+    }
+    void Message(string text)
 	{
 		messageText.text = text;
 		Debug.Log(this + " --> " + text);
@@ -72,6 +80,13 @@ public class MysqlConnect : MonoBehaviour
 	void QuestList(string text)
 	{
 	}
+        void EmailFind()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("name", userName.text);
+        WWW www = new WWW(EmailURL, form);
+        StartCoroutine(Emailtext(www));
+    }
 
 	void Quest() {
 		WWWForm form = new WWWForm();
@@ -119,8 +134,13 @@ public class MysqlConnect : MonoBehaviour
         m_Dropdown.AddOptions(list);
 	}
 
+    IEnumerator Emailtext(WWW www)
+    {
+        yield return www;
+        Emailtextt(www.text);
+    }
 
-	IEnumerator LoginFunc(WWW www)
+    IEnumerator LoginFunc(WWW www)
 	{
 		yield return www;
 
