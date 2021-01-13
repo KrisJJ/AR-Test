@@ -42,7 +42,11 @@ public class SpawnOnMap : MonoBehaviour
         {
             var spawnedObject = _spawnedObjects[i];
             var location = _locations[i];
-            spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
+            if (spawnedObject != null)
+            {
+                spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+                spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
+            }
         }
     }
 }
