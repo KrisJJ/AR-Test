@@ -25,14 +25,14 @@ public class CoorProc : MonoBehaviour
     void Coordin()
     {
         WWWForm form = new WWWForm();
-        form.AddField("QuestName", m_Dropdown.options[m_Dropdown.value].text); //тут я должен получить название квеста
+        form.AddField("name", m_Dropdown.options[m_Dropdown.value].text); //тут я должен получить название квеста
         WWW www = new WWW(QuestsURL, form);
         StartCoroutine(QuestFunc(www));
     }
     void Coordin1()
     {
         WWWForm form = new WWWForm();
-        form.AddField("QuestName", m_Dropdown.options[m_Dropdown.value].text); //тут я должен получить название квеста
+        form.AddField("name", m_Dropdown.options[m_Dropdown.value].text); //тут я должен получить название квеста
         WWW www = new WWW(QuestsURL, form);
         StartCoroutine(QuestFunc1(www));
     }

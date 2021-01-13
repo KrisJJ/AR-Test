@@ -1,11 +1,11 @@
 <?PHP
 $name = $_POST['name'];
-$pass = $_POST['password'];
+$pass = $_POST['pass'];
 $email = $_POST['email'];
 $dbhost = '127.0.0.1:3306';
 $dbuser = 'root';
 $dbpass = 'root';
-$dbname = 'main';
+$dbname = 'arbase';
 $con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
 
 $check = mysqli_query($con, "SELECT * FROM users WHERE `name`='".$name."'");
@@ -16,7 +16,7 @@ if ($numrows == 0)
 {
 	$pass = md5($pass);
 	
-	$ins = mysqli_query($con, "INSERT INTO  users ( `name` ,  `password` ,  `email` ) VALUES ( '".$name."' ,  '".$pass."' ,  '".$email."') ; ");
+	$ins = mysqli_query($con, "INSERT INTO  users ( `name` ,  `pass` ,  `email` ) VALUES ( '".$name."' ,  '".$pass."' ,  '".$email."') ; ");
 	
 	if ($ins)
 		die ("Succesfully Created User!");

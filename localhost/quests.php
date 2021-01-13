@@ -1,15 +1,15 @@
 <?PHP
-$name = $_POST['name'];
+$name = $_POST['creator'];
 $pass = $_POST['password'];
 $QuestName = $_POST['QuestName'];
 $dbhost = '127.0.0.1:3306';
 $dbuser = 'root';
 $dbpass = 'root';
-$dbname = 'main';
+$dbname = 'arbase';
 $con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
 
 
-$check = mysqli_query($con, "SELECT * FROM quests WHERE `name`='".$name."'");
+$check = mysqli_query($con, "SELECT * FROM quests WHERE `creator`='123123'");
 $numrows = mysqli_num_rows($check);
 if ($numrows == 0){
 	die ("no qusets");
@@ -17,8 +17,8 @@ if ($numrows == 0){
 else
 {
 	while($row = mysqli_fetch_array($check)){
-		$QuestName=$row['QuestName'];
-		echo "$QuestName|NEXT|";
+		$name=$row['name'];
+		echo "$name|NEXT|";
 	}
 }
 

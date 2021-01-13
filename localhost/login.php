@@ -1,10 +1,10 @@
 <?PHP
 $name = $_POST['name'];
-$pass = $_POST['password'];
+$pass = $_POST['pass'];
 $dbhost = '127.0.0.1:3306';
 $dbuser = 'root';
 $dbpass = 'root';
-$dbname = 'main';
+$dbname = 'arbase';
 $con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
 
 $check = mysqli_query($con, "SELECT * FROM users WHERE `name`='".$name."'");
@@ -20,7 +20,7 @@ else
 	$pass = md5($pass);
 	while($row = mysqli_fetch_assoc($check))
 	{
-		if ($pass == $row['password'])
+		if ($pass == $row['pass'])
 			die("Success!");
 		else
 			die("Password does not match!");

@@ -75,7 +75,7 @@ public class MysqlConnect : MonoBehaviour
 
 	void Quest() {
 		WWWForm form = new WWWForm();
-		form.AddField("name", userName.text);
+		form.AddField("creator", userName.text);
 		WWW www = new WWW(QuestsURL, form);
 		StartCoroutine(QuestFunc(www));
 	}
@@ -85,7 +85,7 @@ public class MysqlConnect : MonoBehaviour
 
 		WWWForm form = new WWWForm();
 		form.AddField("name", userName.text);
-		form.AddField("password", userPass.text);
+		form.AddField("pass", userPass.text);
 		WWW www = new WWW(loginURL, form);
 		StartCoroutine(LoginFunc(www));
 	}
@@ -102,7 +102,7 @@ public class MysqlConnect : MonoBehaviour
 
 		WWWForm form = new WWWForm();
 		form.AddField("name", userName.text);
-		form.AddField("password", userPass.text);
+		form.AddField("pass", userPass.text);
 		form.AddField("email", userEmail.text);
 		WWW www = new WWW(registerURL, form);
 		StartCoroutine(RegisterFunc(www));
