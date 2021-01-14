@@ -5,16 +5,12 @@ using UnityEngine;
     public class TapOnObject : MonoBehaviour
 
 {
-    [SerializeField] private AudioClip TapSound;
-    private AudioSource audio;
     public int scoreValue;
     private ScoreManager scoreManager;
 
     private void Start()
     {
       
-        audio = GetComponent<AudioSource>();
-
         GameObject ScoreManagerObject = GameObject.FindWithTag("ScoreManager");
 
        
@@ -32,9 +28,6 @@ using UnityEngine;
     private void OnMouseDown()
     {
         
-        audio.PlayOneShot(TapSound);
-        //не успевает проиграть звук
-
         scoreManager.AddScore(scoreValue);
 
         Destroy(gameObject);
