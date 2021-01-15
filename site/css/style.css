@@ -369,3 +369,10 @@ textarea{
     margin-bottom: 15px;
     display: inline-block;
 }
+
+.tagfile{
+    width: 87%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}

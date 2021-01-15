@@ -9,10 +9,10 @@ $query = "CREATE TABLE IF NOT EXISTS `quests`(
         date DATE,
         time TIME,
         longing TEXT,
-        /*creator INT,*/
         creator TEXT,
         numtags INT,
         geotags TEXT,
+        helptags TEXT,
         PRIMARY KEY(id)
     )";
 $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));

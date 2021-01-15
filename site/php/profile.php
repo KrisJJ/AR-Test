@@ -123,10 +123,6 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             $num = $row['numtags'];
             $flag = TRUE;
             switch($long){
-                case 'Бессрочно':
-                    $flag = TRUE;
-                    $date = NULL;
-                    break;
                 case '1 неделя':
                     $flag = FALSE;
                     $date = date_create($date);
@@ -146,6 +142,10 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
                     $flag = FALSE;
                     $date = date_create($date);
                     $date = $date->modify('+1 month');
+                    break;
+                default:
+                    $flag = TRUE;
+                    $date = NULL;
                     break;
             }
 

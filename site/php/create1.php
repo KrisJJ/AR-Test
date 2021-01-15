@@ -1,6 +1,14 @@
 <?php
 session_start();
 include 'connection.php';
+
+$query = "CREATE TABLE IF NOT EXISTS `quests_images`(
+        quest_id INT,
+        task_id INT,
+        img_tmp MEDIUMBLOB,
+        img_name MEDIUMBLOB
+    )";
+$res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
 ?>
 
 <html>
@@ -47,6 +55,26 @@ include 'connection.php';
             d.placeholder = "Вставьте координаты";
             d.value = "";
             document.getElementById("form").append(d);
+            let t = document.createElement('textarea');
+            t.name = "t"+i;
+            t.id = "t"+i;
+            t.cols = 21;
+            t.rows= 4;
+            t.placeholder = "Введите подсказку к нахождению места";
+            t.style.resize = "none";
+            document.getElementById("form").append(t);
+            let div = document.createElement('div');
+            div.id = "div"+i;
+            div.classList.add("tagfile");
+            document.getElementById("form").append(div);
+            let img = document.createElement('input');
+            img.type = "file";
+            img.name = "i"+i;
+            img.id = "i"+i;
+            t.cols = 21;
+            img.accept="image/*";
+            document.getElementById("div"+i).append(img);
+            document.getElementById("amo").value = i;
         }
     </script>
 </head>
@@ -88,9 +116,14 @@ else{
         </div>
         <div class="list">
             <div id="coltag" style="display:inline-block;">
-                <form action="" method="post" id="form">
+                <form action="" method="post" id="form"  enctype="multipart/form-data">
                     <p>Место №' .$x.'</p>
                     <input type="text" name="'.$x.'" id="'.$x.'" placeholder="Вставьте координаты">
+                    <textarea id="t'.$x.'" name="t'.$x.'" cols="21" rows="4" placeholder="Введите подсказку к нахождению места" style="resize:none;"></textarea>
+                    <div id="div'.$x.'" class="tagfile">
+                        <input type="file" id="i'.$x.'" name="i'.$x.'" accept="image/*">
+                    </div>
+                    <input type="hidden" name="amo" id="amo" value="1">
                 </form>
                 <button onclick="moreTags()">Больше мест</button>
             </div>
@@ -107,6 +140,10 @@ else{
                 <div><img src="../meta/Help2.jpg" height="100%"></div>
                 <div class="helptext">Нажмите на кнопку "Lat, Lon:", чтобы скопировать координаты текущего центра карты. После этого вы можете вставить их в поле слева</div>
                 <div><img src="../meta/Help3.jpg" height="100%"></div>
+                <div class="helptext">Если у места не будут указаны координаты или формат координат будет неверен, то оно не будет добавлено в квест.
+                Также необходимо каждому месту задать картинку, которую игрок должен будет найти на указанном месте. Без картинки место тоже не будет добавлено.
+                Если у места есть координаты и нет подсказки, то оно добавлено будет.<br>
+                Будьте внимательны и напишите подсказку к нахождению каждого места, чтобы игроки смогли найти их</div>
                 <button onclick="closeIntro()" style="margin-top:10px;">Закрыть инструкцию</button>
             </div>
         </div>
@@ -114,18 +151,32 @@ else{
     ');}
     if (isset($_POST['fin'])){
         $str = "";
+        $textstr = "";
         $num = 0;
-        foreach($_POST as $a){
-            if(!empty($a)){
-                if(preg_match("|^[\d]*\.[\d]*\, [\d]*\.[\d]*$|", $a)){
-                    $num += 1;
-                    $str = $str.";".$a;
+        for($j=1;$j<=$_POST['amo'];$j++){
+            if(!empty($_POST[$j])){
+                if(preg_match("|^[\d]*\.[\d]*\, [\d]*\.[\d]*$|", $_POST[$j])){
+                    if(($_FILES['i'.$j]['error']==0)&($_FILES['i'.$j]['size']>0)){
+                        $num += 1;
+                        $str = $str."[NEXT]".$_POST[$j];
+                        $textstr = $textstr."[NEXT]".$_POST["t".$j];
+
+                        $img_name = $_FILES['i'.$j]['name'];
+                        $img_tmp = addslashes(file_get_contents($_FILES['i'.$j]['tmp_name']));
+                        $sql = "INSERT INTO `quests_images` (quest_id,task_id,img_tmp,img_name) VALUES(
+                            '$quest',
+                            '$num',
+                            '$img_name',
+                            '$img_tmp'
+                        )";
+                        $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
+                    }
                 }
             }
         }
-        unset($a);
-        $str = substr($str, 1, strlen($str)-1);
-        $sql = "UPDATE `quests` SET geotags='$str', numtags='$num' WHERE id='$quest'";
+        $str = substr($str, 6, strlen($str)-1);
+        $textstr = substr($textstr, 6, strlen($textstr)-1);
+        $sql = "UPDATE `quests` SET geotags='$str', numtags='$num', helptags='$textstr' WHERE id='$quest'";
         $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
         echo('<script>document.location.href="profile.php"</script>');
     }
