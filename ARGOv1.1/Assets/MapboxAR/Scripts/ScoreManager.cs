@@ -22,15 +22,19 @@ public class ScoreManager : MonoBehaviour
  
     void UpdateScore() 
     {
-        scoreText.text = "Счет: " + score;
         finishList = GameObject.Find("ArAlignedMap").GetComponent<SpawnOnMap>()._locationStrings;
-        if (finishList.Count == score)
+        if (score == 0)
         {
-            ModalWindow.SetActive(true);
-            //print(finishList.Count);
+            scoreText.text = "Ищите кристалы";
         }
-        
-       
+        else {
+            scoreText.text = "Кристалы: " + score + " / " + finishList.Count;
+            if (finishList.Count == score)
+            {
+                ModalWindow.SetActive(true);
+                //print(finishList.Count);
+            }
+        }
 
     }
 
