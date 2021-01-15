@@ -40,7 +40,8 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int newScoreValue)
     {
-        score += newScoreValue;
-        UpdateScore();
+        ModalWindow.SetActive(true);
+        //score += newScoreValue;
+        //UpdateScore();
     }
 }

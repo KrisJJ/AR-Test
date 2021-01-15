@@ -138,17 +138,17 @@ namespace Mapbox.Utils
 			return new Vector2d(a.x / d, a.y / d);
 		}
 
-		public static bool operator ==(Vector2d lhs, Vector2d rhs)
-		{
-			return Vector2d.SqrMagnitude(lhs - rhs) < 0.0 / 1.0;
-		}
+        public static bool operator ==(Vector2d lhs, Vector2d rhs)
+        {
+            return Vector2d.SqrMagnitude(lhs - rhs) <= 0.0 / 1.0;
+        }
 
-		public static bool operator !=(Vector2d lhs, Vector2d rhs)
-		{
-			return (double)Vector2d.SqrMagnitude(lhs - rhs) >= 0.0 / 1.0;
-		}
+        public static bool operator !=(Vector2d lhs, Vector2d rhs)
+        {
+            return (double)Vector2d.SqrMagnitude(lhs - rhs) > 0.0 / 1.0;
+        }
 
-		public void Set(double new_x, double new_y)
+        public void Set(double new_x, double new_y)
 		{
 			this.x = new_x;
 			this.y = new_y;

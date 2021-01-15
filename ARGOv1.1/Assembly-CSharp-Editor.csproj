@@ -161,6 +161,7 @@
     <Compile Include="Assets\ThirdPartyAssets\WoLfulus\LineEnding\Editor\LogEntries.cs" />
     <Compile Include="Assets\ThirdPartyAssets\WoLfulus\LineEnding\Editor\LogEntry.cs" />
     <Compile Include="Assets\UnityARKitPlugin\Plugins\iOS\UnityARKit\Editor\UnityARBuildPostprocessor.cs" />
+    <None Include="Assets\Editor\Vuforia\CylinderTargetTextures\VuforiaMars_Images\authoringinfo.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/legen/Desktop/GitArgo/ARGO/ARGOv1.1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -385,6 +386,12 @@
     </Reference>
     <Reference Include="UnityEditor.Networking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.19f1/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="Vuforia.UnityExtensions.Editor">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.19f1/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Vuforia.UnityExtensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.19f1/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.GoogleAudioSpatializer">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.19f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
@@ -805,6 +812,14 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{A1BA64AF-E186-A025-A110-3C59B07A38EC}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="VuforiaScripts.csproj">
+      <Project>{5E7C9317-AC96-468C-DB80-D8445EBF6522}</Project>
+      <Name>VuforiaScripts</Name>
+    </ProjectReference>
+    <ProjectReference Include="VuforiaEditorScripts.csproj">
+      <Project>{EB1377CC-E19B-3F92-C3A5-85EADC1DCF7E}</Project>
+      <Name>VuforiaEditorScripts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
