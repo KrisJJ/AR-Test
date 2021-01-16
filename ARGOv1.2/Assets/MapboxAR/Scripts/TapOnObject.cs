@@ -7,48 +7,22 @@ using UnityEngine;
     public class TapOnObject : MonoBehaviour
 
 {
-    public int scoreValue;
-    private ScoreManager scoreManager;
-
     private Vector2d currentLocation;
 
     public List<string> locationList;
 
-    private SpawnOnMap spawnOnMap;
-
-    public GameObject ModalWindow;
-
-    private CamSwitch camSwitch;
-
+    public GameObject ModalWindow;   
 
     private void Start()
     {
-
         locationList = GameObject.Find("ArAlignedMap").GetComponent<SpawnOnMap>()._locationStrings;
-
-        GameObject ScoreManagerObject = GameObject.FindWithTag("ScoreManager");
-
-        if (ScoreManagerObject != null)
-        {
-            scoreManager = ScoreManagerObject.GetComponent<ScoreManager>();
-        }
-        if (ScoreManagerObject == null)
-        {
-            print("скрипт ScoreManager не найден");
-        }
     }
     private void OnMouseDown()
     {
-        
         currentLocation = GameObject.Find("ArAlignedMap").GetComponent<SpawnOnMap>().currentLocation;
-        
 
         if (currentLocation == Conversions.StringToLatLon(locationList[locationList.Count-1]))
         {
-            //ModalWindow.SetActive(true);
-           
-            scoreManager.AddScore(scoreValue);
-            print("приключения закончились");
             Destroy(gameObject);
         }
         else 
@@ -57,14 +31,12 @@ using UnityEngine;
             {
                 if (Conversions.StringToLatLon(locationList[i]) == currentLocation) 
                 {
-                    //print("Текущий объект: " + currentLocation+ " "+ i);
                     GameObject.Find("ArAlignedMap").GetComponent<SpawnOnMap>().UpdateLocation(Conversions.StringToLatLon(locationList[i+1]));
-                    GameObject.Find("Obrabotchik").GetComponent<CamSwitch>().Switchcam();
-                    //camSwitch.Switchcam();
                     break;
                 }
             }
-        }     
+        }
+        GameObject.Find("Obrabotchik").GetComponent<CamSwitch>().Switchcam();
 
     }
 }

@@ -10,34 +10,36 @@ using System.Linq;
 public class SpawnOnMap : MonoBehaviour
 {
     public Dropdown a_Dropdown;
-    private Vector2d[] _locations;
-    private List<GameObject> _spawnedObjects;
+
     public GameObject _markerPrefab;
+    public GameObject areaPrefab;
     public AbstractMap _map;
     public List<string> _locationStrings;
     [SerializeField] private float _spawnScale;
 
     private GameObject spawnedObject;
-    private Vector2d location;
-
+    private GameObject locationArea;
     public Vector2d currentLocation;
 
 
     void Start()
     {
         _locationStrings = a_Dropdown.options.Select(x => x.text).ToList();
+        GameObject.Find("ScoreManager").GetComponent<ScoreManager>().UpdateScore();
 
         currentLocation = Conversions.StringToLatLon(_locationStrings[0]);
 
         var instance = Instantiate(_markerPrefab);
         spawnedObject = instance;
+        instance = Instantiate(areaPrefab);
+        locationArea = instance;
         Transform();
 
     }
 
     private void Update()
     {
-        if (spawnedObject != null)
+        if (spawnedObject != null & locationArea != null)
         {
             Transform();
         }
@@ -53,5 +55,7 @@ public class SpawnOnMap : MonoBehaviour
     {
         spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
         spawnedObject.transform.localPosition = _map.GeoToWorldPosition(currentLocation, true);
+        locationArea.transform.localScale = new Vector3(30,30,30);
+        locationArea.transform.localPosition = _map.GeoToWorldPosition(currentLocation, true);
     }
 }
