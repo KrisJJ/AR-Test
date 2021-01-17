@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'connection.php';
+include 'PostNewTarget.php';
 ?>
 
 <html>
@@ -44,7 +45,7 @@ include 'connection.php';
             }
             else{
                 $code = md5($pass);
-                $img_name = "default";
+                $img_name = "default.png";
                 $img_tmp = addslashes(file_get_contents("../meta/LOGOplane1.png"));
                 $sql = "INSERT INTO `users` (id,name,pass,email,img_name,img_tmp) VALUES(
                         id,
@@ -56,10 +57,13 @@ include 'connection.php';
                     )";
                 $result = mysqli_query($conn, $sql) or die('Ошибка: '.mysqli_error($conn));
                 echo('<script>document.location.href="index.php"</script>');
-            }
-        }
-    }
-    ?>
+
+/*$vws = new PostNewTarget($img_name, $img_tmp);
+$vws->PostNewTarget();*/
+}
+}
+}
+?>
 </div>
 </body>
 </html>
