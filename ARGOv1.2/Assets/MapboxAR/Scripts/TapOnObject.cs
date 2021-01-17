@@ -37,6 +37,7 @@ using UnityEngine;
             }
         }
         GameObject.Find("Obrabotchik").GetComponent<CamSwitch>().Switchcam();
+        GameObject.Find("OpenPromptButton").SetActive(false);
 
     }
 }
