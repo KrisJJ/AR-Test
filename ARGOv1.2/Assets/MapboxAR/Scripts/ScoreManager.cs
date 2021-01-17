@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
 
     public GameObject ModalWindow;
 
+    public GameObject MapboxPromptPanel;
+
     void Start()
     {
         score = 0;
@@ -27,11 +29,16 @@ public class ScoreManager : MonoBehaviour
     {        
         score += 1;
         print(score);
+        
 
-        if (score == finishList.Count) 
+        if (score == finishList.Count)
         {
             ModalWindow.SetActive(true);
+            MapboxPromptPanel.SetActive(false);
+
+
         }
+       
         
     }
 }
