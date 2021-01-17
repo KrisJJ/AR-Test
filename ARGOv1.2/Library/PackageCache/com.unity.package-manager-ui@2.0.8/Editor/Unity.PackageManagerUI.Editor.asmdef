@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "Unity.PackageManagerUI.Editor",
     "references": [],
@@ -7,3 +8,14 @@
     ],
     "excludePlatforms": []
 }
+=======
+{
+    "name": "Unity.PackageManagerUI.Editor",
+    "references": [],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
+>>>>>>> 7e9cc7564d17352c33f6ea8482525655190ffcea

@@ -31,12 +31,21 @@ public class ScoreManager : MonoBehaviour
         print(score);
         
 
+<<<<<<< HEAD
         if (score == finishList.Count)
         {
             ModalWindow.SetActive(true);
             MapboxPromptPanel.SetActive(false);
 
 
+=======
+        if (score == finishList.Count)
+        {
+            ModalWindow.SetActive(true);
+            MapboxPromptPanel.SetActive(false);
+
+
+>>>>>>> 7e9cc7564d17352c33f6ea8482525655190ffcea
         }
        
         
