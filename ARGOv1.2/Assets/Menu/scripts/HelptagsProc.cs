@@ -46,6 +46,9 @@ public class HelptagsProc : MonoBehaviour
         string otvet = www.text;
         string[] MyList = otvet.Split(new string[] { "|NEXT|" }, System.StringSplitOptions.None);
         list = MyList.ToList();
+        
+        GameObject.Find("PromptManager").GetComponent<PromptText>().promptsList = list;
+
         a_Dropdown.options.Clear();
         a_Dropdown.AddOptions(list);
     }

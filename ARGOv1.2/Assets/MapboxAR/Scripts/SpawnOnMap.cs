@@ -55,7 +55,7 @@ public class SpawnOnMap : MonoBehaviour
     {
         spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
         spawnedObject.transform.localPosition = _map.GeoToWorldPosition(currentLocation, true);
-        locationArea.transform.localScale = new Vector3(30,30,30);
+        locationArea.transform.localScale = new Vector3(50,50,50);
         locationArea.transform.localPosition = _map.GeoToWorldPosition(currentLocation, true);
     }
 }

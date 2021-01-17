@@ -523,9 +523,11 @@
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\RotateOnYTargetTransform.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\UpdateMapPosByARPlaneY.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\PlayerSizeFromLocationAccuracy.cs" />
+    <Compile Include="Assets\MapboxAR\Scripts\PromptText.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\SpawnOnMap.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\TapOnObject.cs" />
+    <Compile Include="Assets\MapboxAR\Scripts\UploadPrompts.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\AbstractAlignmentStrategy.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\AverageHeadingAlignmentStrategy.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\ISynchronizationContext.cs" />
