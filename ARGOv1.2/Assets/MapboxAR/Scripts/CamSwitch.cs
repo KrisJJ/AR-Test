@@ -16,7 +16,7 @@ public class CamSwitch : MonoBehaviour
         MapBoxCam.SetActive(false);
         MapboxPromptPanel.SetActive(false);
         
-        scoreText.text = "Ищи похожее изображение!";
+        scoreText.text = " ";
 
     }
 
