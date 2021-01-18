@@ -542,6 +542,7 @@
     <Compile Include="Assets\Menu\scripts\Mail.cs" />
     <Compile Include="Assets\Menu\scripts\MysqlConnect.cs" />
     <Compile Include="Assets\Menu\scripts\Restart.cs" />
+    <Compile Include="Assets\Menu\scripts\TypeProc.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteDevice.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteEditor.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteEditorInterface.cs" />
