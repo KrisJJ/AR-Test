@@ -22,13 +22,24 @@ public class SpawnOnMap : MonoBehaviour
     public Vector2d currentLocation;
 
 
-    void Start()
+    public void Start1(string Coordinate)
     {
-        _locationStrings = a_Dropdown.options.Select(x => x.text).ToList();
-        GameObject.Find("ScoreManager").GetComponent<ScoreManager>().UpdateScore();
-
-        currentLocation = Conversions.StringToLatLon(_locationStrings[0]);
-
+        
+        //GameObject.Find("ScoreManager").GetComponent<ScoreManager>().UpdateScore();
+        
+        //_locationStrings = a_Dropdown.options.Select(x => x.text).ToList();
+        
+        /*
+        print("Объявляет координаты заново");
+        for (int i = 0; i < _locationStrings.Count(); i++) 
+        {
+            if (_locationStrings[i] != "null") 
+            {
+                currentLocation = Conversions.StringToLatLon(_locationStrings[i]);
+            }
+        }
+        */
+        currentLocation = Conversions.StringToLatLon(Coordinate);
         var instance = Instantiate(_markerPrefab);
         spawnedObject = instance;
         instance = Instantiate(areaPrefab);

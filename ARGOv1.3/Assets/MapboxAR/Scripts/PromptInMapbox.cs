@@ -19,7 +19,7 @@ public class PromptInMapbox : MonoBehaviour
 
         if (GameObject.Find("PromptManager").GetComponent<PromptText>().promptsList.Count != 0) 
         {
-            text.text = GameObject.Find("PromptManager").GetComponent<PromptText>().promptsList[score];
+            //text.text = GameObject.Find("PromptManager").GetComponent<PromptText>().promptsList[score];
         }
         
     }

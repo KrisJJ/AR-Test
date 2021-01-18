@@ -15,16 +15,18 @@ using UnityEngine;
 
     private void Start()
     {
-        locationList = GameObject.Find("ArAlignedMap").GetComponent<SpawnOnMap>()._locationStrings;
+        locationList = GameObject.Find("QuestTypeManager").GetComponent<OpenTypeQuest>().locationStrings;
     }
     private void OnMouseDown()
     {
-        currentLocation = GameObject.Find("ArAlignedMap").GetComponent<SpawnOnMap>().currentLocation;
-
+        /*currentLocation = GameObject.Find("ArAlignedMap").GetComponent<SpawnOnMap>().currentLocation;
+        
         if (currentLocation == Conversions.StringToLatLon(locationList[locationList.Count-1]))
         {
             Destroy(gameObject);
         }
+        
+
         else 
         {
             for (int i = 0; i < locationList.Count; i++)
@@ -38,6 +40,14 @@ using UnityEngine;
         }
         GameObject.Find("Obrabotchik").GetComponent<CamSwitch>().Switchcam();
         GameObject.Find("OpenPromptButton").SetActive(false);
+        */
+        
+        GameObject.Find("QuestTypeManager").GetComponent<OpenTypeQuest>().OpenNewQuest();
+        //GameObject.Find("QuestTypeManager").GetComponent<OpenTypeQuest>().ChangePos();
+
+        Destroy(gameObject);
+
+        
 
     }
 }

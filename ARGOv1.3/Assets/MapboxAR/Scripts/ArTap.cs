@@ -13,13 +13,16 @@ public class ArTap : MonoBehaviour
     public GameObject MapboxPromptPanel;
     private void OnMouseDown()
     {
-
+        GameObject.Find("QuestTypeManager").GetComponent<OpenTypeQuest>().OpenNewQuest();
+        //GameObject.Find("QuestTypeManager").GetComponent<OpenTypeQuest>().ChangePos();
+        /*
         //UpdatePromptText();
         ARCamera.SetActive(false);
         
         MapboxCamera.SetActive(true);
         MapboxPromptPanel.SetActive(true);
-        GameObject.Find("ScoreManager").GetComponent<ScoreManager>().AddScore();
+        */
+        //GameObject.Find("ScoreManager").GetComponent<ScoreManager>().AddScore();
 
         scoreText.text = "Ищи кристаллы!";
     }

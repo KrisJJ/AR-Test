@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DE002445-EADB-640D-C916-612CC64FB4DA}</ProjectGuid>
+    <ProjectGuid>{E1B1F6E6-87D0-2B03-2ED2-ABB795578F6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -51,6 +51,9 @@
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2018.4.19f1</UnityVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -521,11 +524,13 @@
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\RelocateMapByGPS.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\RotateOnYTargetTransform.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ManualSync\UpdateMapPosByARPlaneY.cs" />
+    <Compile Include="Assets\MapboxAR\Scripts\OpenTypeQuest.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\PlayerSizeFromLocationAccuracy.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\PromptInMapbox.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\PromptText.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\SpawnOnMap.cs" />
+    <Compile Include="Assets\MapboxAR\Scripts\StartQuest.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\TapOnObject.cs" />
     <Compile Include="Assets\MapboxAR\Scripts\UploadPrompts.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\AbstractAlignmentStrategy.cs" />
@@ -680,19 +685,19 @@
     <None Include="Assets\AurynSky\Gems Ultimate Pack\READ ME.txt" />
     <None Include="Assets\Resources\Mapbox\MapboxConfiguration.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -896,31 +901,31 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.19f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="MapboxAccountsUnity">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Assets/Mapbox/Core/Plugins/Mapbox/MapboxAccounts/net35/MapboxAccountsUnity.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Assets/Mapbox/Core/Plugins/Mapbox/MapboxAccounts/net35/MapboxAccountsUnity.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.VectorTile.ExtensionMethods">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.VectorTile.Geometry">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.Geometry.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.Geometry.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.VectorTile.PbfReader">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.PbfReader.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.PbfReader.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.VectorTile.VectorTileReader">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.VectorTileReader.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.VectorTileReader.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.IO.Compression">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.IO.Compression/net35/Mapbox.IO.Compression.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.IO.Compression/net35/Mapbox.IO.Compression.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.Json">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.Json/Net35/Mapbox.Json.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.Json/Net35/Mapbox.Json.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Assets/Plugins/JsonNet/Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Assets/Plugins/JsonNet/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/legen/Desktop/GitArgo1/ARGO/ARGOv1.2/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/User/Documents/Unity projects/GIT PROJECTS1/ARGO/ARGOv1.3/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.19f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -1270,11 +1275,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="VuforiaScripts.csproj">
-      <Project>{1416D35D-B843-9059-B656-FA95AFDCDB3A}</Project>
+      <Project>{6E2FA752-7F7F-00FD-AC4A-62AD26FECEBE}</Project>
       <Name>VuforiaScripts</Name>
     </ProjectReference>
     <ProjectReference Include="VuforiaEditorScripts.csproj">
-      <Project>{12EA71D3-76DB-B4E0-92AA-9F98BB3A5B00}</Project>
+      <Project>{C720E3B9-BED5-6630-2161-D9E9C4BF6D84}</Project>
       <Name>VuforiaEditorScripts</Name>
     </ProjectReference>
   </ItemGroup>
