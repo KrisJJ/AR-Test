@@ -126,6 +126,7 @@ else{
                     <input type="hidden" name="amo" id="amo" value="1">
                 </form>
                 <button onclick="moreTags()">Больше мест</button>
+                <textarea form="form" name="last" cols="21" rows="4" placeholder="Введите сообщение, завершающее квест" style="resize:none;" required></textarea>
             </div>
             <div id="colmap" style="display:inline-block;">
                 <!--noindex--><iframe id="map" src="https://bestmaps.ru/map/osm/map/11/43.0877/131.8993" name="iframe" scrolling="auto"></iframe><!--/noindex-->
@@ -158,8 +159,8 @@ else{
                 if(preg_match("|^[\d]*\.[\d]*\, [\d]*\.[\d]*$|", $_POST[$j])){
                     if(($_FILES['i'.$j]['error']==0)&($_FILES['i'.$j]['size']>0)){
                         $num += 1;
-                        $str = $str."[NEXT]".$_POST[$j];
-                        $textstr = $textstr."[NEXT]".$_POST["t".$j];
+                        $str = $str."|NEXT|".$_POST[$j];
+                        $textstr = $textstr."|NEXT|".$_POST["t".$j];
 
                         $img_name = $_FILES['i'.$j]['name'];
                         $img_tmp = addslashes(file_get_contents($_FILES['i'.$j]['tmp_name']));
@@ -174,6 +175,7 @@ else{
                 }
             }
         }
+        $textstr = $textstr."|NEXT|".$_POST['last'];
         $str = substr($str, 6, strlen($str)-1);
         $textstr = substr($textstr, 6, strlen($textstr)-1);
         $sql = "UPDATE `quests` SET geotags='$str', numtags='$num', helptags='$textstr' WHERE id='$quest'";
