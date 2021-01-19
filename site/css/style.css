@@ -376,3 +376,13 @@ textarea{
     text-overflow: ellipsis;
     display: inline-block;
 }
+
+.title{
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.radio{
+    margin-bottom: 10px;
+    width: 170px;
+}

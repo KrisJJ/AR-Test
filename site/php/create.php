@@ -11,8 +11,9 @@ $query = "CREATE TABLE IF NOT EXISTS `quests`(
         longing TEXT,
         creator TEXT,
         numtags INT,
-        geotags TEXT,
+        tagtype TEXT,
         helptags TEXT,
+        geotags TEXT,
         PRIMARY KEY(id)
     )";
 $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));

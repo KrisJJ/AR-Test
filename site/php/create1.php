@@ -43,18 +43,63 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             document.getElementById("colmap").style.display = "inline-block";
             document.getElementById("help").style.display = "none";
         }
+
+        function makeTask1() {
+            let p1 = document.getElementById(i);
+            let p2 = document.getElementById("div"+i);
+            if(p2!=null){
+                p2.style.display = "none";
+            }
+            p1.style.display = "inline-block";
+        }
+        function makeTask2() {
+            let p1 = document.getElementById(i);
+            let p2 = document.getElementById("div"+i);
+            if(p1!=null){
+                p1.style.display = "none";
+            }
+            p2.style.display = "inline-block";
+        }
+
         function moreTags(){
             i += 1;
-            let p = document.createElement('p');
-            p.innerHTML = "Место №" + i;
-            document.getElementById("form").append(p);
-            let d = document.createElement('input');
-            d.type = "text";
-            d.name = i;
-            d.id = i;
-            d.placeholder = "Вставьте координаты";
-            d.value = "";
-            document.getElementById("form").append(d);
+            let name = document.createElement('div');
+            name.innerHTML = "Задание №" + i;
+            name.classList.add("title");
+            document.getElementById("form").append(name);
+
+            let r = document.createElement('div');
+            r.id = "r"+i;
+            r.classList.add("radio");
+            document.getElementById("form").append(r);
+
+            let rt = document.createElement('div');
+            rt.id = "rt"+i;
+            rt.innerHTML = "Тип задания:<br>";
+            document.getElementById("r"+i).append(rt);
+
+            let ch1 = document.createElement('input');
+            ch1.type = "radio";
+            ch1.name = "ch"+i;
+            ch1.id = "ch1"+i;
+            ch1.value = "1";
+            ch1.checked = true;
+            ch1.onclick = makeTask1;
+            document.getElementById("r"+i).append(ch1);
+            document.getElementById("r"+i).append("Поиск предмета");
+            let br = document.createElement('br');
+            document.getElementById("r"+i).append(br);
+
+            let ch2 = document.createElement('input');
+            ch2.type = "radio";
+            ch2.name = "ch"+i;
+            ch2.id = "ch2"+i;
+            ch2.value = "2";
+            ch2.onclick = makeTask2;
+            document.getElementById("r"+i).append(ch2);
+            document.getElementById("r"+i).append("Поиск картинки");
+            document.getElementById("r"+i).append(br);
+
             let t = document.createElement('textarea');
             t.name = "t"+i;
             t.id = "t"+i;
@@ -63,19 +108,32 @@ $res = mysqli_query($conn, $query) or die("Error: ".mysqli_error($conn));
             t.placeholder = "Введите подсказку к нахождению места";
             t.style.resize = "none";
             document.getElementById("form").append(t);
+
+            let d = document.createElement('input');
+            d.type = "text";
+            d.name = i;
+            d.id = i;
+            d.placeholder = "Вставьте координаты";
+            d.value = "";
+            d.style.display = "inline-block";
+            document.getElementById("form").append(d);
+
             let div = document.createElement('div');
             div.id = "div"+i;
             div.classList.add("tagfile");
+            div.style.display = "none";
             document.getElementById("form").append(div);
+
             let img = document.createElement('input');
             img.type = "file";
             img.name = "i"+i;
             img.id = "i"+i;
-            t.cols = 21;
+            img.cols = 21;
             img.accept="image/*";
             document.getElementById("div"+i).append(img);
             document.getElementById("amo").value = i;
         }
+
     </script>
 </head>
 <body>
@@ -117,10 +175,15 @@ else{
         <div class="list">
             <div id="coltag" style="display:inline-block;">
                 <form action="" method="post" id="form"  enctype="multipart/form-data">
-                    <p>Место №' .$x.'</p>
-                    <input type="text" name="'.$x.'" id="'.$x.'" placeholder="Вставьте координаты">
+                    <div class="title" id="name'.$x.'">Задание №' .$x.'</div>
+                    <div class="radio" id="r'.$x.'">
+                        <div id="rt'.$x.'">Тип задания:<br></div>
+                        <input type="radio" name="ch'.$x.'" id="ch1'.$x.'" value="1" checked onclick="makeTask1()">Поиск предмета<br>
+                        <input type="radio" name="ch'.$x.'" id="ch2'.$x.'" value="2" onclick="makeTask2()">Поиск картинки<br>
+                    </div>
                     <textarea id="t'.$x.'" name="t'.$x.'" cols="21" rows="4" placeholder="Введите подсказку к нахождению места" style="resize:none;"></textarea>
-                    <div id="div'.$x.'" class="tagfile">
+                    <input type="text" name="'.$x.'" id="'.$x.'" placeholder="Вставьте координаты" style="display:inline-block;">
+                    <div id="div'.$x.'" class="tagfile" style="display:none;">
                         <input type="file" id="i'.$x.'" name="i'.$x.'" accept="image/*">
                     </div>
                     <input type="hidden" name="amo" id="amo" value="1">
@@ -154,31 +217,40 @@ else{
         $str = "";
         $textstr = "";
         $num = 0;
+        $type = "";
         for($j=1;$j<=$_POST['amo'];$j++){
-            if(!empty($_POST[$j])){
+            if($_POST['ch'.$j]==1){
                 if(preg_match("|^[\d]*\.[\d]*\, [\d]*\.[\d]*$|", $_POST[$j])){
-                    if(($_FILES['i'.$j]['error']==0)&($_FILES['i'.$j]['size']>0)){
-                        $num += 1;
-                        $str = $str."|NEXT|".$_POST[$j];
-                        $textstr = $textstr."|NEXT|".$_POST["t".$j];
+                    $num += 1;
+                    $type = $type."|NEXT|1";
+                    $str = $str."|NEXT|".$_POST[$j];
+                    $textstr = $textstr."|NEXT|".$_POST["t".$j];
+                }
+            }
+            if ($_POST['ch'.$j]==2){
+                if(($_FILES['i'.$j]['error']==0)&($_FILES['i'.$j]['size']>0)){
+                    $num += 1;
+                    $type = $type."|NEXT|2";
+                    $str = $str."|NEXT|null";
+                    $textstr = $textstr."|NEXT|".$_POST["t".$j];
 
-                        $img_name = $_FILES['i'.$j]['name'];
-                        $img_tmp = addslashes(file_get_contents($_FILES['i'.$j]['tmp_name']));
-                        $sql = "INSERT INTO `quests_images` (quest_id,task_id,img_tmp,img_name) VALUES(
-                            '$quest',
-                            '$num',
-                            '$img_name',
-                            '$img_tmp'
-                        )";
-                        $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
-                    }
+                    $img_name = $_FILES['i'.$j]['name'];
+                    $img_tmp = addslashes(file_get_contents($_FILES['i'.$j]['tmp_name']));
+                    $sql = "INSERT INTO `quests_images` (quest_id,task_id,img_tmp,img_name) VALUES(
+                        '$quest',
+                        '$num',
+                        '$img_name',
+                        '$img_tmp'
+                    )";
+                    $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
                 }
             }
         }
         $textstr = $textstr."|NEXT|".$_POST['last'];
         $str = substr($str, 6, strlen($str)-1);
         $textstr = substr($textstr, 6, strlen($textstr)-1);
-        $sql = "UPDATE `quests` SET geotags='$str', numtags='$num', helptags='$textstr' WHERE id='$quest'";
+        $type = substr($str, 6, strlen($type)-1);
+        $sql = "UPDATE `quests` SET geotags='$str', numtags='$num', helptags='$textstr', tagtype='$type' WHERE id='$quest'";
         $res = mysqli_query($conn, $sql) or die('Ошибка: ' . mysqli_error($conn));
         echo('<script>document.location.href="profile.php"</script>');
     }
